@@ -1,4 +1,4 @@
-package com.via.ui.configs;
+package com.amazon.ui.configs;
 
 import org.aeonbits.owner.Config;
 

@@ -1,10 +1,10 @@
-package com.via.ui.pages.base;
+package com.amazon.ui.pages.base;
 
+import com.amazon.ui.configs.EnvironmentConfiguration;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.WaitForSelectorState;
-import com.via.ui.configs.ConfigurationManager;
-import com.via.ui.configs.EnvironmentConfiguration;
+import com.amazon.ui.configs.ConfigurationManager;
 
 public abstract class BasePage<T> {
     protected final EnvironmentConfiguration environmentConfiguration = ConfigurationManager.getEnvironmentConfiguration();

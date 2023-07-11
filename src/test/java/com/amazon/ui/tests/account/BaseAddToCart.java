@@ -1,9 +1,8 @@
-package com.via.ui.tests.account;
+package com.amazon.ui.tests.account;
 
-import com.via.ui.base.BaseTest;
+import com.amazon.ui.base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
 public abstract class BaseAddToCart extends BaseTest {
 

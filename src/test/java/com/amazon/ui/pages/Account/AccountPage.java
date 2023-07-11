@@ -1,9 +1,9 @@
-package com.via.ui.pages.Account;
+package com.amazon.ui.pages.Account;
 
+import com.amazon.ui.pages.base.BaseAuthenticatedPage;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
-import com.via.ui.pages.base.BaseAuthenticatedPage;
 
 public class AccountPage extends BaseAuthenticatedPage<AccountPage> {
 

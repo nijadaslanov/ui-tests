@@ -1,4 +1,4 @@
-package com.via.ui.tests.login;
+package com.amazon.ui.tests.login;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

@@ -1,8 +1,8 @@
-package com.via.ui.pages.login;
+package com.amazon.ui.pages.login;
 
+import com.amazon.ui.pages.base.BaseAuthenticatedPage;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-import com.via.ui.pages.base.BaseAuthenticatedPage;
 
 public class LoginPage extends BaseAuthenticatedPage<LoginPage> {
 

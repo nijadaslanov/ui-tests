@@ -1,6 +1,6 @@
-package com.via.ui.tests.account;
+package com.amazon.ui.tests.account;
 
-import com.via.ui.pages.Account.AccountPage;
+import com.amazon.ui.pages.Account.AccountPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

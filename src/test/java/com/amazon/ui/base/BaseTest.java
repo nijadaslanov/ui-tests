@@ -1,7 +1,7 @@
-package com.via.ui.base;
+package com.amazon.ui.base;
 
-import com.via.ui.pages.Account.AccountPage;
-import com.via.ui.pages.login.LoginPage;
+import com.amazon.ui.pages.Account.AccountPage;
+import com.amazon.ui.pages.login.LoginPage;
 
 public abstract class BaseTest extends BaseUI {
     protected ThreadLocal<LoginPage> loginPage = ThreadLocal.withInitial(() -> new LoginPage(page.get()));

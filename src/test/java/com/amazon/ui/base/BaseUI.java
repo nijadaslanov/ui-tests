@@ -1,9 +1,10 @@
-package com.via.ui.base;
+package com.amazon.ui.base;
 
+import com.amazon.ui.configs.EnvironmentConfiguration;
+import com.amazon.ui.constants.BrowserConstants;
 import com.microsoft.playwright.*;
-import com.via.ui.configs.BrowserConfiguration;
-import com.via.ui.configs.ConfigurationManager;
-import com.via.ui.configs.EnvironmentConfiguration;
+import com.amazon.ui.configs.BrowserConfiguration;
+import com.amazon.ui.configs.ConfigurationManager;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.SoftAssertions;
 import org.testng.ITestContext;
@@ -14,8 +15,7 @@ import org.testng.annotations.BeforeMethod;
 import java.lang.reflect.Method;
 import java.util.*;
 
-import static com.via.ui.constants.BrowserConstants.*;
-import static com.via.ui.constants.LogConstants.*;
+import static com.amazon.ui.constants.LogConstants.*;
 
 @Slf4j
 public abstract class BaseUI implements IBaseUI {
@@ -31,7 +31,7 @@ public abstract class BaseUI implements IBaseUI {
 
     @BeforeMethod
     public void beforeMethod(Method method, ITestContext context) {
-        browserName.set(Optional.ofNullable(context.getCurrentXmlTest().getParameter(BROWSER)).orElse(CHROMIUM));
+        browserName.set(Optional.ofNullable(context.getCurrentXmlTest().getParameter(BrowserConstants.BROWSER)).orElse(BrowserConstants.CHROMIUM));
         log.info(SETTING_UP_TEST, browserName.get(), method.getName());
 
         try {
@@ -54,9 +54,9 @@ public abstract class BaseUI implements IBaseUI {
 
     @AfterMethod
     public void afterMethod() {
-//        page.get().close();
-//        browserContext.get().close();
-//        playwright.get().close();
+        page.get().close();
+        browserContext.get().close();
+        playwright.get().close();
     }
 
     @AfterClass(alwaysRun = true)
@@ -86,8 +86,8 @@ public abstract class BaseUI implements IBaseUI {
      */
     private BrowserContext getBrowserContext() {
         BrowserContext browserContext = browser.get()
-                .newContext(new Browser.NewContextOptions().setPermissions(List.of(GEOLOCATION))
-                                    .setExtraHTTPHeaders(Map.of(REDUCE_MOTION, REDUCE)).setViewportSize(1400, 900));
+                .newContext(new Browser.NewContextOptions().setPermissions(List.of(BrowserConstants.GEOLOCATION))
+                                    .setExtraHTTPHeaders(Map.of(BrowserConstants.REDUCE_MOTION, BrowserConstants.REDUCE)).setViewportSize(1400, 900));
         browserContext.setDefaultNavigationTimeout(browserConfiguration.browserNavigationTimeout());
         browserContext.setDefaultTimeout(browserConfiguration.browserDefaultTimeout());
 
@@ -102,9 +102,8 @@ public abstract class BaseUI implements IBaseUI {
         isHeadless = (isHeadless == null) ? true : isHeadless;
 
         BrowserType.LaunchOptions launchOptions = new BrowserType.LaunchOptions().setHeadless(isHeadless);
-        launchOptions.setArgs(List.of(DISABLE_GPU, DISABLE_SOFTWARE_RASTERIZER));
+        launchOptions.setArgs(List.of(BrowserConstants.DISABLE_GPU, BrowserConstants.DISABLE_SOFTWARE_RASTERIZER));
 
         return launchOptions;
     }
-
 }

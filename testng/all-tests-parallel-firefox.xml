@@ -3,7 +3,7 @@
 <suite name="Firefox Test Suite" parallel="methods" thread-count="10">
 
     <listeners>
-        <listener class-name="com.via.ui.listeners.TestListener"/>
+        <listener class-name="TestListener"/>
     </listeners>
 
     <test name="Firefox Tests Parallel">

@@ -1,4 +1,4 @@
-package com.via.ui.base;
+package com.amazon.ui.base;
 
 public interface IBaseUI {
 //    public void waitForPageToLoad();

@@ -1,4 +1,4 @@
-package com.via.ui.constants;
+package com.amazon.ui.constants;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -14,13 +14,6 @@ public class LogConstants {
      * ERROR MESSAGES
      ***************/
     public static final String SETUP_ERROR = "An error occurred during test setup: {}";
-    public static final String PLAYWRIGHT_RUNNING_INITIALIZATION_ERROR = "An error occurred while initializing PlaywrightRunner: {}";
-    public static final String INVALID_BROWSER_NAME_ERROR = "Browser name '$s' is invalid.";
-    public static final String BROWSER_INITIALIZATION_ERROR = "An error occurred during browser initialization: {}";
-    public static final String PROPERTIES_FILE_LOCATION_ERROR = "Could not find properties file for environment: {}";
-    public static final String READING_PROPERTIES_FILE_ERROR = "Error reading properties file for environment: {}";
-    public static final String PROPERTY_NOT_FOUND_MESSAGE = "Property '{}' not found";
-    public static final String INVALID_PROPERTY_TYPE_ERROR = "Property value for key '{}' is not of type '{}'.";
 
     /************
      * LOG COLORS

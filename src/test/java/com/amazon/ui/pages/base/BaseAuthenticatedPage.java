@@ -1,4 +1,4 @@
-package com.via.ui.pages.base;
+package com.amazon.ui.pages.base;
 
 public abstract class BaseAuthenticatedPage<T> extends BasePage<T> {
     public String getActualTitle() {

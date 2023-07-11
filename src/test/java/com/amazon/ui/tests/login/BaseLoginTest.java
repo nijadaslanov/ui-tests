@@ -1,9 +1,7 @@
-package com.via.ui.tests.login;
+package com.amazon.ui.tests.login;
 
-import com.via.ui.base.BaseTest;
-import org.testng.annotations.BeforeMethod;
+import com.amazon.ui.base.BaseTest;
 
-import static com.via.ui.pages.login.LoginPage.*;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 

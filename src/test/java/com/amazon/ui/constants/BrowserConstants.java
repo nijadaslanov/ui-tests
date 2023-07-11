@@ -1,4 +1,4 @@
-package com.via.ui.constants;
+package com.amazon.ui.constants;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

@@ -3,7 +3,7 @@
 <suite name="Safari Test Suite" parallel="methods" thread-count="10">
 
     <listeners>
-        <listener class-name="TestListener"/>
+        <listener class-name="com.amazon.ui.listeners.TestListener" />
     </listeners>
 
     <test name="Safari Tests Parallel">

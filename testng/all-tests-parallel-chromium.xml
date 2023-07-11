@@ -3,13 +3,13 @@
 <suite name="Chrome Test Suite" parallel="methods" thread-count="10">
 
     <listeners>
-        <listener class-name="TestListener"/>
+        <listener class-name="com.amazon.ui.listeners.TestListener" />
     </listeners>
 
     <test name="Chrome Tests Parallel">
         <parameter name="browser" value="chromium"/>
         <packages>
-            <package name="com.via.ui.*"/>
+            <package name="com.amazon.ui.*"/>
         </packages>
 
     </test>

@@ -37,14 +37,37 @@ public abstract class BaseUI {
         try {
             log.info(INITIALIZING_PLAYWRIGHT_RUNNER, browserName.get());
             playwright.set(Playwright.create());
+        } catch (PlaywrightException e) {
+            log.error("Playwright initialization error: {}", e.getMessage());
+            log.error(e.toString());
+            return; // Exit the method early since subsequent steps won't work without Playwright
+        }
+
+        try {
             browser.set(instantiateBrowser());
-            browserContext.set(getBrowserContext());
+        } catch (IllegalArgumentException e) {
+            log.error("Invalid browser name: {}", e.getMessage());
+            log.error(e.toString());
+            return;
+        }
+
+        browserContext.set(getBrowserContext());
+
+        try {
             page.set(browser.get().newPage());
-            softAssertions.set(new SoftAssertions());
+        } catch (PlaywrightException e) {
+            log.error("Failed to create new page: {}", e.getMessage());
+            log.error(e.toString());
+            return;
+        }
+
+        softAssertions.set(new SoftAssertions());
+
+        try {
             page.get().navigate(environmentConfiguration.stageBaseURI());
-                   // .concat(environmentConfiguration.stageLoginPath()));
-        } catch (Exception e) {
-            log.error(SETUP_ERROR, e.getMessage());
+
+        } catch (PlaywrightException e) {
+            log.error("Failed to navigate to URL: {}", e.getMessage());
             log.error(e.toString());
         }
     }
@@ -97,7 +120,7 @@ public abstract class BaseUI {
      */
     private BrowserType.LaunchOptions getLaunchOptions() {
         Boolean isHeadless = browserConfiguration.isBrowserHeadless();
-        isHeadless = (isHeadless == null) ? true : isHeadless;
+        isHeadless = isHeadless == null || isHeadless;
 
         BrowserType.LaunchOptions launchOptions = new BrowserType.LaunchOptions().setHeadless(isHeadless);
         launchOptions.setArgs(List.of(BrowserConstants.DISABLE_GPU, BrowserConstants.DISABLE_SOFTWARE_RASTERIZER));

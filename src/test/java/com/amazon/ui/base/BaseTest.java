@@ -11,7 +11,6 @@ public abstract class BaseTest extends BaseUI {
     protected ThreadLocal<AccountPage> accountPage = ThreadLocal.withInitial(() -> new AccountPage(page.get()));
     protected final EnvironmentConfiguration environmentConfiguration = ConfigurationManager.getEnvironmentConfiguration();
 
-
     @AfterMethod()
     public void tearDown(){
         loginPage.remove();

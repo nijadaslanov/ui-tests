@@ -5,7 +5,7 @@ import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
 
-public class AccountPage extends BaseAuthenticatedPage<AccountPage> {
+public class AccountPage extends BaseAuthenticatedPage {
 
     public static final String LOCATOR_SEARCH_BAR = "//input[@id='twotabsearchtextbox']";
     public static final String LOCATOR_FIRST_PRODUCT = ".a-link-normal.s-underline-text.s-underline-link-text.s-link-style.a-text-normal";
@@ -20,7 +20,7 @@ public class AccountPage extends BaseAuthenticatedPage<AccountPage> {
     public static final String LOCATOR_SEARCH_ICON = "//input[@id='nav-search-submit-button']";
 
     public AccountPage(Page page) {
-        initialize(page, environmentConfiguration.stageAccountPath());
+        initialize(page);
     }
 
     @Override

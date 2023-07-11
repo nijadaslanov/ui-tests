@@ -4,7 +4,7 @@ import com.amazon.ui.base.BaseAuthenticatedPage;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 
-public class LoginPage extends BaseAuthenticatedPage<LoginPage> {
+public class LoginPage extends BaseAuthenticatedPage {
 
     public static final String LOCATOR_EMAIL_INPUT = "//input[@id='ap_email']";
     public static final String LOCATOR_PASSWORD_INPUT = "//input[@id='ap_password']";
@@ -14,7 +14,7 @@ public class LoginPage extends BaseAuthenticatedPage<LoginPage> {
     public static final String LOCATOR_SIGN_IN_WELCOME_BACK_BUTTON = "//input[@id='signInSubmit']";
 
     public LoginPage(Page page) {
-        initialize(page, environmentConfiguration.stageLoginPath());
+        initialize(page);
     }
 
     @Override

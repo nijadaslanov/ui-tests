@@ -1,6 +1,6 @@
 package com.amazon.ui.base;
 
-public abstract class BaseAuthenticatedPage<T> extends BasePage<T> {
+public abstract class BaseAuthenticatedPage extends BasePage {
 
     public String getActualTitle() {
         return this.page.title();

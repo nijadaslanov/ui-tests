@@ -1,22 +1,17 @@
 package com.amazon.ui.base;
 
-import com.amazon.ui.configs.EnvironmentConfiguration;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.WaitForSelectorState;
-import com.amazon.ui.configs.ConfigurationManager;
 
-public abstract class BasePage<T> {
-    protected final EnvironmentConfiguration environmentConfiguration = ConfigurationManager.getEnvironmentConfiguration();
+public abstract class BasePage {
 
     public abstract Locator getPageElement(String elementLocatorString);
 
     public Page page;
-    public String url;
 
-    public void initialize(Page page, String urlPath) {
+    public void initialize(Page page) {
         this.page = page;
-        this.url = environmentConfiguration.stageBaseURI();
     }
 
     /**

@@ -8,12 +8,6 @@ public interface EnvironmentConfiguration extends Config {
     @Key("uri")
     String stageBaseURI();
 
-    @Key("ui.stage.login.path")
-    String stageLoginPath();
-
-    @Key("ui.stage.account.path")
-    String stageAccountPath();
-
     @Key("email")
     String email();
 

@@ -25,17 +25,6 @@ public class LoginTests extends BaseLoginTest {
 
     }
 
-
-//        String accountNameText = accountPage.get().getText(LoginPage.ACCOUNT_NAME);
-//        assertTrue(accountPage.get()
-//                .getPageElement(LoginPage.ACCOUNT_NAME)
-//                .isVisible(), "The LoginPage -> email required text was not displayed");
-//
-//        // Add an assertion to check if the text is equal to "Hi, Nijad A"
-//        assertEquals(accountNameText, "Hi, Nijad A", "The text of ACCOUNT_NAME button is not as expected");
-
-
-
 //    @Test(groups = {"p1", "login", "subscribers"})
 //    void cannot_login_with_incorrect_email() {
 //        loginPage.get()

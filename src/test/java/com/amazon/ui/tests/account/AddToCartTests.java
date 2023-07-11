@@ -1,9 +1,12 @@
 package com.amazon.ui.tests.account;
 
+import com.amazon.ui.listeners.TestListener;
 import com.amazon.ui.pages.Account.AccountPage;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+@Listeners(TestListener.class)
 public class AddToCartTests extends BaseAddToCart {
 
     @Test(groups = {"p1", "account"})
@@ -11,7 +14,7 @@ public class AddToCartTests extends BaseAddToCart {
 
         String selectedProductTitle = accountPage.get()
                 .fillSearchBar("headphone")
-                .pressEnter()
+                .pressSearch()
                 .clickFirstProductLink()
                 .getSelectedProductTitle();
 

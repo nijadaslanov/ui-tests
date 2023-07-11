@@ -1,4 +1,4 @@
-package com.amazon.ui.pages.base;
+package com.amazon.ui.base;
 
 public abstract class BaseAuthenticatedPage<T> extends BasePage<T> {
 

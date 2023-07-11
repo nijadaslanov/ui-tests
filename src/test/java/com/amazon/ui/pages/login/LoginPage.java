@@ -1,6 +1,6 @@
 package com.amazon.ui.pages.login;
 
-import com.amazon.ui.pages.base.BaseAuthenticatedPage;
+import com.amazon.ui.base.BaseAuthenticatedPage;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 

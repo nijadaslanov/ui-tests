@@ -1,6 +1,6 @@
 package com.amazon.ui.pages.Account;
 
-import com.amazon.ui.pages.base.BaseAuthenticatedPage;
+import com.amazon.ui.base.BaseAuthenticatedPage;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
@@ -45,18 +45,13 @@ public class AccountPage extends BaseAuthenticatedPage<AccountPage> {
         return this;
     }
 
-    public AccountPage pressEnter() {
-        page.keyboard().press("Enter");
+    public AccountPage pressSearch() {
+        getPageElement("//input[@id='nav-search-submit-button']").click();
         return this;
     }
 
     public AccountPage clickFirstProductLink() {
         getPageElement(LOCATOR_FIRST_PRODUCT).first().click();
-        return this;
-    }
-
-    public AccountPage selectProductByIndex(int index) {
-        getPageElement(LOCATOR_FIRST_PRODUCT).nth(index).click();
         return this;
     }
 

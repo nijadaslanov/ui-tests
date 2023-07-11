@@ -1,7 +1,5 @@
 package com.via.ui.tests.login;
 
-import com.via.ui.pages.Account.AccountPage;
-import com.via.ui.pages.login.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -9,31 +7,16 @@ import org.testng.annotations.Test;
 public class LoginTests extends BaseLoginTest {
 
     @Test(groups = {"p1", "login"})
-    void can_login_with_good_credentials() throws InterruptedException {
+    void can_login_with_good_credentials() {
 
-        Thread.sleep(2000);
-        loginPage.get().hover();
-        Thread.sleep(2000);
-        loginPage.get().clickSignInButton();
-        Thread.sleep(2000);
-        Assert.assertEquals(accountPage.get().page.title(), "Amazon Sign-In", "Title of page not match");
-        System.out.println("loginPage.get().getCurrentUrl() = " + loginPage.get().getCurrentUrl());
-        loginPage.get().typeEmail("2136082634");
-        loginPage.get().clickContinue();
-        loginPage.get().typePassword("Nicad3202!");
-        AccountPage accountPage1 = loginPage.get().clickSignInWelcomeBack();
-        accountPage1.page.waitForLoadState();
-        Thread.sleep(20000);
-        Assert.assertEquals(accountPage1.page.title(), "Amazon.com. Spend less. Smile more.", "Title of page not match");
-        System.out.println(accountPage1.getCurrentUrl());
-        Thread.sleep(8000);
-        accountPage.get().searchItem("headphone").pressEnter();
-        accountPage.get().page.waitForLoadState();
-        accountPage.get().clickFirstProductLink();
-        Thread.sleep(5000);
-        accountPage.get().clickOnRadioBtn();
-        Thread.sleep(5000);
-
+        loginPage.get()
+                .hover()
+                .clickSignInButton()
+                .typeEmail("2136082634")
+                .clickContinue()
+                .typePassword("Nicad3202!").clickSignInWelcomeBack();
+        accountPage.get().waitForTitle("Amazon.com. Spend less. Smile more.");
+        Assert.assertEquals(accountPage.get().getActualTitle(), "Amazon.com. Spend less. Smile more.", "Title of page not match");
 
     }
 

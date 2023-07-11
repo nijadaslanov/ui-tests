@@ -8,11 +8,7 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class BaseLoginTest extends BaseTest {
-    @BeforeMethod
-    public void beforeMethod() {
-//        loginPage.get().navigate();
 
-//    }
 //
 //    @Override
 //    public void waitForPageToLoad() {
@@ -39,4 +35,4 @@ public class BaseLoginTest extends BaseTest {
 //                             .getCurrentUrl(), loginPage.get().url, "LoginPage url does not match actual url.");
 //    }
     }
-}
+

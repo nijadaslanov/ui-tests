@@ -25,37 +25,6 @@ public class LoginTests extends BaseLoginTest {
 
     }
 
-//    @Test(groups = {"p1", "login", "subscribers"})
-//    void cannot_login_with_incorrect_email() {
-//        loginPage.get()
-//                .typePassword("Kelanskites123!")
-//                .clickSubmitButton();
-//        assertTrue(loginPage.get()
-//                           .getPageElement(loginPage.get().EMAIL_REQUIRED_TEXT)
-//                           .isVisible(), "The LoginPage -> email required text was not displayed");
-//        loginPage.get()
-//                .typeEmail("flying.spaghetti.monster@gmail.com")
-//                .clickSubmitButton();
-//        assertTrue(loginPage.get()
-//                           .getPageElement(loginPage.get().INVALID_CREDENTIALS_ALERT)
-//                           .isVisible(), "The LoginPage -> incorrect email/password alert was not displayed");
-//    }
-//
-//    @Test(groups = {"p1", "login", "subscribers"})
-//    void cannot_login_with_incorrect_password() {
-//        loginPage.get()
-//                .typeEmail("kelan.larkin+kelanskites@viacustomers.com")
-//                .clickSubmitButton();
-//        assertTrue(loginPage.get()
-//                           .getPageElement(loginPage.get().PASSWORD_REQUIRED_TEXT)
-//                           .isVisible(), "The LoginPage -> password required text was not displayed");
-//        loginPage.get()
-//                .typePassword("WeAreTheKnightsWhoSayNi!")
-//                .clickSubmitButton();
-//        assertTrue(loginPage.get()
-//                           .getPageElement(loginPage.get().INVALID_CREDENTIALS_ALERT)
-//                           .isVisible(), "The LoginPage -> incorrect email/password alert was not displayed");
-//    }
 }
 
 

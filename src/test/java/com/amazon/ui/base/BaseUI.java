@@ -18,7 +18,7 @@ import java.util.*;
 import static com.amazon.ui.constants.LogConstants.*;
 
 @Slf4j
-public abstract class BaseUI implements IBaseUI {
+public abstract class BaseUI {
     BrowserConfiguration browserConfiguration = ConfigurationManager.getBrowserConfiguration();
     EnvironmentConfiguration environmentConfiguration = ConfigurationManager.getEnvironmentConfiguration();
 
@@ -41,9 +41,6 @@ public abstract class BaseUI implements IBaseUI {
             browserContext.set(getBrowserContext());
             page.set(browser.get().newPage());
             softAssertions.set(new SoftAssertions());
-
-            // Without first visiting the login page, we will be unable to set cookies and sessionStorage
-            // information for authenticating through the API. Please don't touch!
             page.get().navigate(environmentConfiguration.stageBaseURI());
                    // .concat(environmentConfiguration.stageLoginPath()));
         } catch (Exception e) {
@@ -87,7 +84,8 @@ public abstract class BaseUI implements IBaseUI {
     private BrowserContext getBrowserContext() {
         BrowserContext browserContext = browser.get()
                 .newContext(new Browser.NewContextOptions().setPermissions(List.of(BrowserConstants.GEOLOCATION))
-                                    .setExtraHTTPHeaders(Map.of(BrowserConstants.REDUCE_MOTION, BrowserConstants.REDUCE)).setViewportSize(1400, 900));
+                                    .setExtraHTTPHeaders(Map.of(BrowserConstants.REDUCE_MOTION, BrowserConstants.REDUCE))
+                        .setViewportSize(1920, 2000));
         browserContext.setDefaultNavigationTimeout(browserConfiguration.browserNavigationTimeout());
         browserContext.setDefaultTimeout(browserConfiguration.browserDefaultTimeout());
 

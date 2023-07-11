@@ -9,10 +9,6 @@ import com.amazon.ui.configs.ConfigurationManager;
 public abstract class BasePage<T> {
     protected final EnvironmentConfiguration environmentConfiguration = ConfigurationManager.getEnvironmentConfiguration();
 
-    public abstract T navigate();
-
-    public abstract String getCurrentUrl();
-
     public abstract Locator getPageElement(String elementLocatorString);
 
     public Page page;

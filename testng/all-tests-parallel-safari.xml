@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Safari Test Suite" parallel="methods" thread-count="10">
+
+    <listeners>
+        <listener class-name="com.via.ui.listeners.TestListener"/>
+    </listeners>
+
+    <test name="Safari Tests Parallel">
+        <parameter name="browser" value="safari"/>
+        <packages>
+            <package name="com.via.ui.*"/>
+        </packages>
+
+    </test>
+
+</suite>

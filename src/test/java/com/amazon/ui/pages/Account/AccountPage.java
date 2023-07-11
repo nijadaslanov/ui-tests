@@ -22,16 +22,6 @@ public class AccountPage extends BaseAuthenticatedPage<AccountPage> {
     }
 
     @Override
-    public AccountPage navigate() {
-        return null;
-    }
-
-    @Override
-    public String getCurrentUrl() {
-        return page.url();
-    }
-
-    @Override
     public Locator getPageElement(String elementLocatorString) {
         return page.locator(elementLocatorString);
     }

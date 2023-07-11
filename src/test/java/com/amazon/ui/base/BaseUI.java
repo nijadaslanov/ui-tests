@@ -85,7 +85,7 @@ public abstract class BaseUI {
         BrowserContext browserContext = browser.get()
                 .newContext(new Browser.NewContextOptions().setPermissions(List.of(BrowserConstants.GEOLOCATION))
                                     .setExtraHTTPHeaders(Map.of(BrowserConstants.REDUCE_MOTION, BrowserConstants.REDUCE))
-                        .setViewportSize(1920, 2000));
+                        .setViewportSize(1920, 1000));
         browserContext.setDefaultNavigationTimeout(browserConfiguration.browserNavigationTimeout());
         browserContext.setDefaultTimeout(browserConfiguration.browserDefaultTimeout());
 

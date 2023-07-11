@@ -18,17 +18,6 @@ public class LoginPage extends BaseAuthenticatedPage<LoginPage> {
     }
 
     @Override
-    public LoginPage navigate() {
-        page.navigate(url);
-        return this;
-    }
-
-    @Override
-    public String getCurrentUrl() {
-        return page.url();
-    }
-
-    @Override
     public Locator getPageElement(String elementLocatorString) {
         return getPageElementWithWait(page, elementLocatorString);
     }

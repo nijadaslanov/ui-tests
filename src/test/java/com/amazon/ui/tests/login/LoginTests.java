@@ -6,6 +6,8 @@ import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import static com.amazon.ui.constants.TestConstants.SIGN_IN_TITLE;
+
 @Listeners(TestListener.class)
 public class LoginTests extends BaseLoginTest {
 
@@ -20,8 +22,8 @@ public class LoginTests extends BaseLoginTest {
                 .clickContinueButton()
                 .enterPassword(environmentConfiguration.password())
                 .clickSignInWelcomeBackButton();
-        accountPage.get().waitForTitle("Amazon.com. Spend less. Smile more.");
-        Assert.assertEquals(accountPage.get().getActualTitle(), "Amazon.com. Spend less. Smile more.", "Page title does not match expected");
+        accountPage.get().waitForTitle(SIGN_IN_TITLE);
+        Assert.assertEquals(accountPage.get().getActualTitle(), SIGN_IN_TITLE, "Page title does not match expected");
 
     }
 

@@ -16,6 +16,8 @@ public class AccountPage extends BaseAuthenticatedPage<AccountPage> {
     public static final String LOCATOR_DELETE_BUTTON = "//input[@value='Delete']";
     public static final String LOCATOR_EMPTY_CART_MSG = "//h1[@class='a-spacing-mini a-spacing-top-base' and normalize-space()='Your Amazon Cart is empty.']";
     public static final String LOCATOR_CONFIRMATION_MSG = "#NATC_SMART_WAGON_CONF_MSG_SUCCESS";
+    public static final String LOCATOR_CART_ITEM= "//span[@class='a-truncate-cut']";
+    public static final String LOCATOR_SEARCH_ICON = "//input[@id='nav-search-submit-button']";
 
     public AccountPage(Page page) {
         initialize(page, environmentConfiguration.stageAccountPath());
@@ -36,7 +38,7 @@ public class AccountPage extends BaseAuthenticatedPage<AccountPage> {
     }
 
     public AccountPage pressSearch() {
-        getPageElement("//input[@id='nav-search-submit-button']").click();
+        getPageElement(LOCATOR_SEARCH_ICON).click();
         return this;
     }
 

@@ -10,5 +10,4 @@ public class ConfigurationManager {
     public static BrowserConfiguration getBrowserConfiguration() {
         return ConfigFactory.create(BrowserConfiguration.class);
     }
-
 }

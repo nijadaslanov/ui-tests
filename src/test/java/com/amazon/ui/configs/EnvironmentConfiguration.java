@@ -5,7 +5,7 @@ import org.aeonbits.owner.Config;
 @Config.LoadPolicy(Config.LoadType.MERGE)
 @Config.Sources({"classpath:environment.properties"})
 public interface EnvironmentConfiguration extends Config {
-    @Key("ui.stage.base.uri")
+    @Key("uri")
     String stageBaseURI();
 
     @Key("ui.stage.login.path")
@@ -14,4 +14,9 @@ public interface EnvironmentConfiguration extends Config {
     @Key("ui.stage.account.path")
     String stageAccountPath();
 
+    @Key("email")
+    String email();
+
+    @Key("password")
+    String password();
 }

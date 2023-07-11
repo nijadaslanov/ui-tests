@@ -11,9 +11,9 @@ public abstract class BaseAddToCart extends BaseTest {
         loginPage.get()
                 .hoverAccountList()
                 .clickSignInButton()
-                .enterEmail("2136082634")
+                .enterEmail(environmentConfiguration.email())
                 .clickContinueButton()
-                .enterPassword("Nicad3202!")
+                .enterPassword(environmentConfiguration.password())
                 .clickSignInWelcomeBackButton();
         accountPage.get().waitForTitle("Amazon.com. Spend less. Smile more.");
         Assert.assertEquals(accountPage.get().getActualTitle(), "Amazon.com. Spend less. Smile more.", "Page title does not match expected");

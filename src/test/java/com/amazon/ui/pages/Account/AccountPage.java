@@ -7,23 +7,15 @@ import com.microsoft.playwright.options.AriaRole;
 
 public class AccountPage extends BaseAuthenticatedPage<AccountPage> {
 
-    public static final String SEARCH_BAR = "//input[@id='twotabsearchtextbox']";
-
-    public static final String FIRST_PRODUCT = ".a-link-normal.s-underline-text.s-underline-link-text.s-link-style.a-text-normal";
-
-    public static final String SELECTED_PRODUCT = "//span[@id='productTitle']";
-
-    public static final String NO_THANKS = "//span[contains(@class, 'a-button-base abb-intl-decline')]//input[@class='a-button-input']";
-
-    public static final String RADIO_BTN = "//div[@class='a-column a-span12 accordion-caption']/span[@class='a-text-bold']";
-
-    public static final String GO_TO_CART = "//a[@href='/cart?ref_=sw_gtc' and contains(@class, 'a-button-text')]";
-
-    public static final String DELETE = "//input[@value='Delete']";
-
-    public static final String EMPTY_CART_MSG = "//h1[@class='a-spacing-mini a-spacing-top-base' and normalize-space()='Your Amazon Cart is empty.']";
-
-    public static final String CONFIRM_MSG = "#NATC_SMART_WAGON_CONF_MSG_SUCCESS";
+    public static final String LOCATOR_SEARCH_BAR = "//input[@id='twotabsearchtextbox']";
+    public static final String LOCATOR_FIRST_PRODUCT = ".a-link-normal.s-underline-text.s-underline-link-text.s-link-style.a-text-normal";
+    public static final String LOCATOR_SELECTED_PRODUCT = "//span[@id='productTitle']";
+    public static final String LOCATOR_DISMISS_BUTTON = "//span[contains(@class, 'a-button-base abb-intl-decline')]//input[@class='a-button-input']";
+    public static final String LOCATOR_RADIO_BUTTON = "//div[@class='a-column a-span12 accordion-caption']/span[@class='a-text-bold']";
+    public static final String LOCATOR_CART_BUTTON = "//a[@href='/cart?ref_=sw_gtc' and contains(@class, 'a-button-text')]";
+    public static final String LOCATOR_DELETE_BUTTON = "//input[@value='Delete']";
+    public static final String LOCATOR_EMPTY_CART_MSG = "//h1[@class='a-spacing-mini a-spacing-top-base' and normalize-space()='Your Amazon Cart is empty.']";
+    public static final String LOCATOR_CONFIRMATION_MSG = "#NATC_SMART_WAGON_CONF_MSG_SUCCESS";
 
     public AccountPage(Page page) {
         initialize(page, environmentConfiguration.stageAccountPath());
@@ -44,13 +36,12 @@ public class AccountPage extends BaseAuthenticatedPage<AccountPage> {
         return page.locator(elementLocatorString);
     }
 
-
-    public String getText(String elementLocatorString) {
+    public String getElementText(String elementLocatorString) {
         return getPageElement(elementLocatorString).innerText();
     }
 
-    public AccountPage searchItem(String item) {
-        getPageElement(SEARCH_BAR).fill(item);
+    public AccountPage fillSearchBar(String item) {
+        getPageElement(LOCATOR_SEARCH_BAR).fill(item);
         return this;
     }
 
@@ -60,56 +51,48 @@ public class AccountPage extends BaseAuthenticatedPage<AccountPage> {
     }
 
     public AccountPage clickFirstProductLink() {
-        getPageElement(FIRST_PRODUCT).first().click();
+        getPageElement(LOCATOR_FIRST_PRODUCT).first().click();
         return this;
     }
 
-    public AccountPage clickProductLinkByIndex(int index) {
-        getPageElement(FIRST_PRODUCT).nth(index).click();
+    public AccountPage selectProductByIndex(int index) {
+        getPageElement(LOCATOR_FIRST_PRODUCT).nth(index).click();
         return this;
     }
 
-    public AccountPage clickOnRadioBtn() {
-        getPageElement(RADIO_BTN).click();
+    public AccountPage selectRadioButton() {
+        getPageElement(LOCATOR_RADIO_BUTTON).click();
         return this;
     }
 
-
-    public AccountPage clickAddToCart() {
+    public AccountPage addToCart() {
         page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Add to Cart")).click();
         return this;
     }
 
-    public AccountPage clickOnNoThanks() {
-        Locator noThanksButton = getPageElement(NO_THANKS);
-        if (noThanksButton.isVisible()) {
-            noThanksButton.click();
+    public AccountPage dismissAddOns() {
+        Locator dismissButton = getPageElement(LOCATOR_DISMISS_BUTTON);
+        if (dismissButton.isVisible()) {
+            dismissButton.click();
         }
         return this;
     }
 
-
-    public String getText() {
-        return getPageElement(CONFIRM_MSG).innerText();
-
+    public String getConfirmationMessage() {
+        return getPageElement(LOCATOR_CONFIRMATION_MSG).innerText();
     }
 
-    public synchronized void waitForTitle(String title) {
-        page.waitForFunction("document.title === '" + title + "'");
-    }
-
-    public synchronized AccountPage clickOnGoToCart() {
-        getPageElement(GO_TO_CART).click();
+    public AccountPage goToCart() {
+        getPageElement(LOCATOR_CART_BUTTON).click();
         return new AccountPage(page);
     }
 
-    public String getText2() {
-        return getPageElement(SELECTED_PRODUCT).innerText();
-
+    public String getSelectedProductTitle() {
+        return getPageElement(LOCATOR_SELECTED_PRODUCT).innerText();
     }
 
-    public void clickOnDelete() {
-        getPageElement(DELETE).click();
+    public void removeItemFromCart() {
+        getPageElement(LOCATOR_DELETE_BUTTON).click();
     }
 
 }

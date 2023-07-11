@@ -7,23 +7,31 @@ import org.testng.annotations.Test;
 public class AddToCartTests extends BaseAddToCart {
 
     @Test(groups = {"p1", "account"})
-    void can_login_with_good_credentials() {
+    void can_add_item_to_cart_and_delete() {
 
-        String firstSelectedItem = accountPage.get()
-                .searchItem("headphone")
+        String selectedProductTitle = accountPage.get()
+                .fillSearchBar("headphone")
                 .pressEnter()
-                .clickFirstProductLink().getText2();
+                .clickFirstProductLink()
+                .getSelectedProductTitle();
+
         accountPage.get()
-                .clickOnRadioBtn()
-                .clickAddToCart()
-                .clickOnNoThanks();
-        Assert.assertEquals(accountPage.get().getText(), " Added to Cart", "No Confirm Msg");
-        AccountPage afterGoToCart = accountPage.get().clickOnGoToCart();
+                .selectRadioButton()
+                .addToCart()
+                .dismissAddOns();
+
+        Assert.assertEquals(accountPage.get().getConfirmationMessage(), " Added to Cart", "No Confirm Msg");
+
+        accountPage.get().goToCart();
+
         String shoppingCartItemName = page.get().locator("//span[@class='a-truncate-cut']").innerText();
-        Assert.assertEquals(shoppingCartItemName,firstSelectedItem,"Context not matching");
-        accountPage.get().clickOnDelete();
-        String actualMsg = accountPage.get().getText(AccountPage.EMPTY_CART_MSG).trim();
-        Assert.assertEquals(actualMsg,"Your Amazon Cart is empty.","Msg misMatch");
+        Assert.assertEquals(shoppingCartItemName, selectedProductTitle, "Product title not matching");
+
+        accountPage.get().removeItemFromCart();
+
+        String actualMsg = accountPage.get().getElementText(AccountPage.LOCATOR_EMPTY_CART_MSG).trim();
+        Assert.assertEquals(actualMsg, "Your Amazon Cart is empty.", "Empty cart message mismatch");
 
     }
+
 }

@@ -9,14 +9,14 @@ public abstract class BaseAddToCart extends BaseTest {
     @BeforeMethod(alwaysRun = true)
     void set_up() {
         loginPage.get()
-                .hover()
+                .hoverAccountList()
                 .clickSignInButton()
-                .typeEmail("2136082634")
-                .clickContinue()
-                .typePassword("Nicad3202!")
-                .clickSignInWelcomeBack();
+                .enterEmail("2136082634")
+                .clickContinueButton()
+                .enterPassword("Nicad3202!")
+                .clickSignInWelcomeBackButton();
         accountPage.get().waitForTitle("Amazon.com. Spend less. Smile more.");
-        Assert.assertEquals(accountPage.get().getActualTitle(), "Amazon.com. Spend less. Smile more.", "Title of page not match");
+        Assert.assertEquals(accountPage.get().getActualTitle(), "Amazon.com. Spend less. Smile more.", "Page title does not match expected");
 
     }
 }

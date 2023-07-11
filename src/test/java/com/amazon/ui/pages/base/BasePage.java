@@ -20,7 +20,7 @@ public abstract class BasePage<T> {
 
     public void initialize(Page page, String urlPath) {
         this.page = page;
-        this.url = environmentConfiguration.stageBaseURI().concat(urlPath);
+        this.url = environmentConfiguration.stageBaseURI();
     }
 
     /**

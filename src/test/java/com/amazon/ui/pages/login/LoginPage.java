@@ -6,12 +6,12 @@ import com.microsoft.playwright.Page;
 
 public class LoginPage extends BaseAuthenticatedPage<LoginPage> {
 
-    public static final String EMAIL_INPUT = "//input[@id='ap_email']";
-    public static final String PASSWORD_INPUT = "//input[@id='ap_password']";
-    public static final String Hover = "#nav-link-accountList";
-    public static final String SIGN_IN = "//div[@id='nav-flyout-ya-signin']/a/span[@class='nav-action-inner']";
-    public static final String CONTINUE = "//input[@id='continue']";
-    public static final String SIGN_IN_For_Welcome_Back = "//input[@id='signInSubmit']";
+    public static final String LOCATOR_EMAIL_INPUT = "//input[@id='ap_email']";
+    public static final String LOCATOR_PASSWORD_INPUT = "//input[@id='ap_password']";
+    public static final String LOCATOR_ACCOUNT_LIST_HOVER = "#nav-link-accountList";
+    public static final String LOCATOR_SIGN_IN_BUTTON = "//div[@id='nav-flyout-ya-signin']/a/span[@class='nav-action-inner']";
+    public static final String LOCATOR_CONTINUE_BUTTON = "//input[@id='continue']";
+    public static final String LOCATOR_SIGN_IN_WELCOME_BACK_BUTTON = "//input[@id='signInSubmit']";
 
     public LoginPage(Page page) {
         initialize(page, environmentConfiguration.stageLoginPath());
@@ -33,37 +33,37 @@ public class LoginPage extends BaseAuthenticatedPage<LoginPage> {
         return getPageElementWithWait(page, elementLocatorString);
     }
 
-    public LoginPage typeEmail(String email) {
-        getPageElement(EMAIL_INPUT).clear();
-        getPageElement(EMAIL_INPUT).type(email);
+    public LoginPage enterEmail(String email) {
+        getPageElement(LOCATOR_EMAIL_INPUT).clear();
+        getPageElement(LOCATOR_EMAIL_INPUT).type(email);
         return this;
     }
 
-    public LoginPage typePassword(String password) {
-        getPageElement(PASSWORD_INPUT).clear();
-        getPageElement(PASSWORD_INPUT).type(password);
+    public LoginPage enterPassword(String password) {
+        getPageElement(LOCATOR_PASSWORD_INPUT).clear();
+        getPageElement(LOCATOR_PASSWORD_INPUT).type(password);
         return this;
     }
 
     public LoginPage clickSignInButton() {
         page.waitForLoadState();
-        getPageElement(SIGN_IN).click();
+        getPageElement(LOCATOR_SIGN_IN_BUTTON).click();
         return this;
     }
 
-    public LoginPage clickContinue() {
-        getPageElement(CONTINUE).click();
+    public LoginPage clickContinueButton() {
+        getPageElement(LOCATOR_CONTINUE_BUTTON).click();
         return this;
     }
 
-    public LoginPage clickSignInWelcomeBack() {
-        getPageElement(SIGN_IN_For_Welcome_Back).click();
-        return this;
-
-    }
-
-    public LoginPage hover() {
-        getPageElement(Hover).hover();
+    public LoginPage clickSignInWelcomeBackButton() {
+        getPageElement(LOCATOR_SIGN_IN_WELCOME_BACK_BUTTON).click();
         return this;
     }
+
+    public LoginPage hoverAccountList() {
+        getPageElement(LOCATOR_ACCOUNT_LIST_HOVER).hover();
+        return this;
+    }
+
 }

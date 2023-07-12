@@ -2,7 +2,7 @@ package com.amazon.ui.base;
 
 import com.amazon.ui.configs.ConfigurationManager;
 import com.amazon.ui.configs.EnvironmentConfiguration;
-import com.amazon.ui.pages.Account.AccountPage;
+import com.amazon.ui.pages.account.AccountPage;
 import com.amazon.ui.pages.login.LoginPage;
 import org.testng.annotations.AfterMethod;
 

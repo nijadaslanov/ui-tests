@@ -1,7 +1,7 @@
 package com.amazon.ui.tests.account;
 
 import com.amazon.ui.listeners.TestListener;
-import com.amazon.ui.pages.Account.AccountPage;
+import com.amazon.ui.pages.account.AccountPage;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -10,7 +10,7 @@ import static com.amazon.ui.constants.TestConstants.ADDED_TO_CART_MSG;
 import static com.amazon.ui.constants.TestConstants.CART_EMPTY_MSG;
 
 @Listeners(TestListener.class)
-public class AddToCartTests extends BaseAddToCart {
+public class AddToCart extends BaseAddToCart {
 
     @Test(groups = {"p1", "account"}, description = "This test validates that a user can add an item to cart and delete it.")
     void can_add_item_to_cart_and_delete() {

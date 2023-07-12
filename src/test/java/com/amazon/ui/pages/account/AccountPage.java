@@ -1,4 +1,4 @@
-package com.amazon.ui.pages.Account;
+package com.amazon.ui.pages.account;
 
 import com.amazon.ui.base.BaseAuthenticatedPage;
 import com.microsoft.playwright.Locator;

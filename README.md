@@ -1,6 +1,7 @@
 This framework is a Java-based UI test automation framework using Maven, Playwright, and TestNG.
 
 Table of Contents
+
 Installation
 Configuration
 Test Structure
@@ -14,22 +15,24 @@ Contributing
 Installation
 To install and set up the framework, follow these steps:
 
-Clone the repository from GitHub: git clone <repository_url>
 Install Java Development Kit (JDK) version 17 or above.
 Install Apache Maven.
 Open a terminal or command prompt and navigate to the project directory.
 Run mvn clean install to download dependencies and build the project.
+
 Configuration
 The framework provides configuration options for browser and environment settings. Modify the configuration files as needed:
 
 Browser Configuration: Update the browser type and other options in the browser-configuration.properties file.
 Environment Configuration: Update the base URL and other environment-specific settings in the environment-configuration.properties file.
+
 Test Structure
 The tests in this framework follow the TestNG testing framework structure. Test classes are organized into packages based on functionality or test categories.
 
 The test classes are located in the com.amazon.ui.tests package. Each test class extends a base test class to inherit common setup and teardown steps.
 
 Page Objects
+
 Page objects represent web pages or components and provide methods to interact with the elements on those pages. Page objects are located in the com.amazon.ui.pages package.
 
 To create a new page object:
@@ -38,6 +41,7 @@ Create a new Java class in the com.amazon.ui.pages package.
 Extend the BasePage or any relevant base page class.
 Define element locators as constants using Playwright's locator syntax.
 Implement page-specific methods to interact with the elements.
+
 Test Data
 Test data can be managed in multiple ways depending on the project requirements. Some common approaches include:
 
@@ -66,6 +70,7 @@ Keep test methods small, focused, and independent.
 Use assertions to validate expected behavior and outcomes.
 Implement meaningful test descriptions and group tests using TestNG annotations.
 Use appropriate logging and error handling techniques to enhance test troubleshooting.
+
 Troubleshooting
 If you encounter any issues while using the framework, consider the following troubleshooting steps:
 

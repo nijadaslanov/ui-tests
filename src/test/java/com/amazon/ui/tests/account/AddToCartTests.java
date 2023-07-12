@@ -1,6 +1,5 @@
 package com.amazon.ui.tests.account;
 
-import com.amazon.ui.constants.TestConstants;
 import com.amazon.ui.listeners.TestListener;
 import com.amazon.ui.pages.Account.AccountPage;
 import org.testng.Assert;

@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import static com.amazon.ui.constants.TestConstants.SIGN_IN_TITLE;
 
 @Listeners(TestListener.class)
-public class LoginTests extends BaseLogin {
+public class LoginTest extends BaseLogin {
 
     @Test(groups = {"p1", "login"}, description = "Tests whether user can login with valid credentials")
     void can_login_with_good_credentials() {

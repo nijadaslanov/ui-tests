@@ -10,7 +10,7 @@ import static com.amazon.ui.constants.TestConstants.ADDED_TO_CART_MSG;
 import static com.amazon.ui.constants.TestConstants.CART_EMPTY_MSG;
 
 @Listeners(TestListener.class)
-public class AddToCart extends BaseAddToCart {
+public class AddToCartTest extends BaseAddToCart {
 
     @Test(groups = {"p1", "account"}, description = "This test validates that a user can add an item to cart and delete it.")
     void can_add_item_to_cart_and_delete() {

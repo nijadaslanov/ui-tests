@@ -13,6 +13,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 import java.lang.reflect.Method;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 import static com.amazon.ui.constants.LogConstants.*;
@@ -27,6 +30,7 @@ public abstract class BaseUI {
     public static ThreadLocal<String> browserName = new ThreadLocal<>();
     public static ThreadLocal<BrowserContext> browserContext = new ThreadLocal<>();
     public static ThreadLocal<Page> page = new ThreadLocal<>();
+
     public static ThreadLocal<SoftAssertions> softAssertions = new ThreadLocal<>();
 
     @BeforeMethod
@@ -84,8 +88,8 @@ public abstract class BaseUI {
         softAssertions.get().assertAll();
         if (softAssertions.get().errorsCollected().isEmpty()) {
             log.info(ASSERTIONS_EXECUTED_CORRECTLY_MSG,
-                     this.getClass().getSimpleName(),
-                     browser.get().browserType().name());
+                    this.getClass().getSimpleName(),
+                    browser.get().browserType().name());
         }
     }
 
@@ -107,7 +111,7 @@ public abstract class BaseUI {
     private BrowserContext getBrowserContext() {
         BrowserContext browserContext = browser.get()
                 .newContext(new Browser.NewContextOptions().setPermissions(List.of(BrowserConstants.GEOLOCATION))
-                                    .setExtraHTTPHeaders(Map.of(BrowserConstants.REDUCE_MOTION, BrowserConstants.REDUCE))
+                        .setExtraHTTPHeaders(Map.of(BrowserConstants.REDUCE_MOTION, BrowserConstants.REDUCE))
                         .setViewportSize(1920, 1000));
         browserContext.setDefaultNavigationTimeout(browserConfiguration.browserNavigationTimeout());
         browserContext.setDefaultTimeout(browserConfiguration.browserDefaultTimeout());
@@ -127,4 +131,37 @@ public abstract class BaseUI {
 
         return launchOptions;
     }
+
+    protected void saveSessionStorage(Page page) {
+        String sessionStorage = (String) page.evaluate("JSON.stringify(sessionStorage)");
+        try {
+            Path sessionStorageFile = Paths.get("sessionStorage.json");
+            Files.write(sessionStorageFile, sessionStorage.getBytes());
+            System.setProperty("SESSION_STORAGE_FILE", sessionStorageFile.toAbsolutePath().toString());
+        } catch (Exception e) {
+            log.error("Error saving session storage: " + e.getMessage());
+        }
+    }
+
+    protected void loadSessionStorage(BrowserContext context) {
+        try {
+            String sessionStorageFile = System.getProperty("SESSION_STORAGE_FILE");
+            if (sessionStorageFile != null) {
+                String sessionStorage = new String(Files.readAllBytes(Paths.get(sessionStorageFile)));
+                context.addInitScript("(storage => {\n" +
+                        "  if (window.location.hostname === 'example.com') {\n" +
+                        "    const entries = JSON.parse(storage);\n" +
+                        "     for (const [key, value] of Object.entries(entries)) {\n" +
+                        "      window.sessionStorage.setItem(key, value);\n" +
+                        "    };\n" +
+                        "  }\n" +
+                        "})('" + sessionStorage + "')");
+            }
+        } catch (Exception e) {
+           log.error("Error loading session storage: " + e.getMessage());
+        }
+    }
+
 }
+
+

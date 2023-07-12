@@ -29,6 +29,8 @@ public class LoginTests extends BaseLoginTest {
         // Wait until the page title is SIGN_IN_TITLE
         accountPage.get().waitForTitle(SIGN_IN_TITLE);
 
+        saveSessionStorage(page.get());
+
         // Assert that the actual title of the page matches the expected SIGN_IN_TITLE
         Assert.assertEquals(accountPage.get().getActualTitle(), SIGN_IN_TITLE, "Page title does not match expected");
 

@@ -6,6 +6,7 @@ import com.microsoft.playwright.Page;
 
 public class AccountPage extends BaseAuthenticatedPage {
 
+    // Locators for various elements on the page
     public static final String LOCATOR_SEARCH_BAR = "//input[@id='twotabsearchtextbox']";
     public static final String LOCATOR_FIRST_PRODUCT = ".a-link-normal.s-underline-text.s-underline-link-text.s-link-style.a-text-normal";
     public static final String LOCATOR_SELECTED_PRODUCT = "//span[@id='productTitle']";
@@ -29,20 +30,42 @@ public class AccountPage extends BaseAuthenticatedPage {
         return page.locator(elementLocatorString);
     }
 
+    /**
+     * Retrieves the inner text of the specified element.
+     *
+     * @param elementLocatorString The locator string for the element.
+     * @return The inner text of the element.
+     */
     public String getElementText(String elementLocatorString) {
         return getPageElement(elementLocatorString).innerText();
     }
 
+    /**
+     * Fills the search bar with the specified item.
+     *
+     * @param item The item to search for.
+     * @return The updated AccountPage instance.
+     */
     public AccountPage fillSearchBar(String item) {
         getPageElement(LOCATOR_SEARCH_BAR).fill(item);
         return this;
     }
 
+    /**
+     * Presses the search icon to perform the search.
+     *
+     * @return The updated AccountPage instance.
+     */
     public AccountPage pressSearch() {
         getPageElement(LOCATOR_SEARCH_ICON).click();
         return this;
     }
 
+    /**
+     * Clicks on the link of the first product in the search results.
+     *
+     * @return The updated AccountPage instance.
+     */
     public AccountPage clickFirstProductLink() {
         getPageElement(LOCATOR_FIRST_PRODUCT).first().click();
         return this;
@@ -53,6 +76,11 @@ public class AccountPage extends BaseAuthenticatedPage {
         return this;
     }
 
+    /**
+     * Adds the selected item to the cart.
+     *
+     * @return The updated AccountPage instance.
+     */
     public AccountPage addToCart() {
         Locator lo = page.locator(LOCATOR_ADD_TO_CART_BUTTON);
         lo.scrollIntoViewIfNeeded();
@@ -65,6 +93,12 @@ public class AccountPage extends BaseAuthenticatedPage {
         dismissButton.click();
     }
 
+    /**
+     * Retrieves the confirmation message after adding the item to the cart.
+     *
+     * @return The confirmation message.
+     */
+
     public String getConfirmationMessage() {
         return getPageElement(LOCATOR_CONFIRMATION_MSG).innerText();
     }
@@ -74,13 +108,19 @@ public class AccountPage extends BaseAuthenticatedPage {
         return new AccountPage(page);
     }
 
+    /**
+     * Retrieves the title of the selected product.
+     *
+     * @return The title of the selected product.
+     */
     public String getSelectedProductTitle() {
         return getPageElement(LOCATOR_SELECTED_PRODUCT).innerText();
     }
 
+    /**
+     * Removes the item from the cart.
+     */
     public void removeItemFromCart() {
         getPageElement(LOCATOR_DELETE_BUTTON).click();
     }
-
-
 }

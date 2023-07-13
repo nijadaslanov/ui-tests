@@ -132,6 +132,14 @@ public abstract class BaseUI {
         return launchOptions;
     }
 
+    /**
+     * Saves the session storage of a given page to a file.
+     * The session storage is converted to JSON and saved as a file named "sessionStorage.json".
+     * The absolute path of the file is set as a system property "SESSION_STORAGE_FILE".
+     *
+     * @param page The page from which to save the session storage.
+     */
+
     protected void saveSessionStorage(Page page) {
         String sessionStorage = (String) page.evaluate("JSON.stringify(sessionStorage)");
         try {
@@ -143,6 +151,15 @@ public abstract class BaseUI {
         }
     }
 
+
+    /**
+     * Loads the session storage from a previously saved file and applies it to a given browser context.
+     * The session storage file path is retrieved from the system property "SESSION_STORAGE_FILE".
+     * The session storage is read from the file, parsed as JSON, and added to the browser context's initialization script.
+     * The session storage is only loaded if the current hostname is "example.com".
+     *
+     * @param context The browser context to which the session storage should be loaded.
+     */
     protected void loadSessionStorage(BrowserContext context) {
         try {
             String sessionStorageFile = System.getProperty("SESSION_STORAGE_FILE");

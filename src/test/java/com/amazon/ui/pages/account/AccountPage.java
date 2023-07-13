@@ -9,7 +9,7 @@ public class AccountPage extends BaseAuthenticatedPage {
     public static final String LOCATOR_SEARCH_BAR = "//input[@id='twotabsearchtextbox']";
     public static final String LOCATOR_FIRST_PRODUCT = ".a-link-normal.s-underline-text.s-underline-link-text.s-link-style.a-text-normal";
     public static final String LOCATOR_SELECTED_PRODUCT = "//span[@id='productTitle']";
-    public static final String LOCATOR_ADD_TO_CART_BUTTON="//input[@id='add-to-cart-button']";
+    public static final String LOCATOR_ADD_TO_CART_BUTTON = "//input[@id='add-to-cart-button']";
     public static final String LOCATOR_NO_THANKS_BUTTON = "//span[contains(@class, 'a-button-base abb-intl-decline')]//input[@class='a-button-input']";
     public static final String LOCATOR_RADIO_BUTTON = "//div[@class='a-column a-span12 accordion-caption']/span[@class='a-text-bold']";
     public static final String LOCATOR_CART_BUTTON = "//a[@href='/cart?ref_=sw_gtc' and contains(@class, 'a-button-text')]";
@@ -54,9 +54,9 @@ public class AccountPage extends BaseAuthenticatedPage {
     }
 
     public AccountPage addToCart() {
-       Locator lo = page.locator(LOCATOR_ADD_TO_CART_BUTTON);
-       lo.scrollIntoViewIfNeeded();
-       lo.click();
+        Locator lo = page.locator(LOCATOR_ADD_TO_CART_BUTTON);
+        lo.scrollIntoViewIfNeeded();
+        lo.click();
         return this;
     }
 
@@ -81,7 +81,6 @@ public class AccountPage extends BaseAuthenticatedPage {
     public void removeItemFromCart() {
         getPageElement(LOCATOR_DELETE_BUTTON).click();
     }
-
 
 
 }

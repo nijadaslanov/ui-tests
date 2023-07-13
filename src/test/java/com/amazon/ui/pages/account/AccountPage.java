@@ -54,7 +54,9 @@ public class AccountPage extends BaseAuthenticatedPage {
     }
 
     public AccountPage addToCart() {
-        getPageElement(LOCATOR_ADD_TO_CART_BUTTON).click();
+       Locator lo = page.locator(LOCATOR_ADD_TO_CART_BUTTON);
+       lo.scrollIntoViewIfNeeded();
+       lo.click();
         return this;
     }
 
@@ -79,5 +81,7 @@ public class AccountPage extends BaseAuthenticatedPage {
     public void removeItemFromCart() {
         getPageElement(LOCATOR_DELETE_BUTTON).click();
     }
+
+
 
 }

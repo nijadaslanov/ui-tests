@@ -33,7 +33,7 @@ public class AddToCartTest extends BaseAddToCart {
             }
             page.addToCart();
 
-            // Dismissing add-ons if visible
+            // Clicking on No,Thanks Button if visible
             if (page.getPageElement(AccountPage.LOCATOR_NO_THANKS_BUTTON).isVisible()) {
                 page.clickNoThanksBtn();
             }

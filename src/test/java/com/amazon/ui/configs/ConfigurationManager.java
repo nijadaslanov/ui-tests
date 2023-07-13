@@ -10,4 +10,8 @@ public class ConfigurationManager {
     public static BrowserConfiguration getBrowserConfiguration() {
         return ConfigFactory.create(BrowserConfiguration.class);
     }
+
+    public static TestDataConfiguration getTestDataConfiguration() {
+        return ConfigFactory.create(TestDataConfiguration.class);
+    }
 }

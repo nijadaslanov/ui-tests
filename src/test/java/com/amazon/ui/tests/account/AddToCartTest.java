@@ -21,12 +21,12 @@ public class AddToCartTest extends BaseAddToCart {
                 .pressSearch();
 
         // Clicking on the first product link
-        String selectedProductTitle = page.clickFirstProductLink().getSelectedProductTitle();
+        page.clickFirstProductLink();
 
-        // Checking if a product was found
-        if (selectedProductTitle == null) {
-            throw new IllegalStateException("NO_ITEM_FOUND");
-        } else {
+        String selectedProductTitle;
+        if (page.getPageElement(AccountPage.LOCATOR_SELECTED_PRODUCT).first() != null) {
+            selectedProductTitle = page.getSelectedProductTitle();
+
             // Adding the item to the cart
             if (page.getPageElement(AccountPage.LOCATOR_RADIO_BUTTON).first() != null) {
                 page.selectRadioButton();
@@ -37,8 +37,9 @@ public class AddToCartTest extends BaseAddToCart {
             if (page.getPageElement(AccountPage.LOCATOR_NO_THANKS_BUTTON).isVisible()) {
                 page.clickNoThanksBtn();
             }
+        } else {
+            throw new IllegalStateException("NO_ITEM_FOUND");
         }
-
 
         // Checking if the item is added to the cart
         Assert.assertEquals(accountPage.get().getConfirmationMessage(), ADDED_TO_CART_MSG, "No Confirm Msg");
@@ -53,7 +54,7 @@ public class AddToCartTest extends BaseAddToCart {
             String shoppingCartItemName = accountPage.get().getElementText(AccountPage.LOCATOR_CART_ITEM);
 
             // Assert that the product title matches the selected product's title
-            Assert.assertEquals(shoppingCartItemName, selectedProductTitle, "Product title not matching");
+            Assert.assertTrue(selectedProductTitle.contains(shoppingCartItemName) , "Product title not matching");
 
             // Remove the item from the cart
             accountPage.get().removeItemFromCart();

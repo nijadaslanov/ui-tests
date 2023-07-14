@@ -68,7 +68,7 @@ public abstract class BaseUI {
         softAssertions.set(new SoftAssertions());
 
         try {
-            page.get().navigate(environmentConfiguration.stageBaseURI());
+            page.get().navigate(environmentConfiguration.baseURI());
 
         } catch (PlaywrightException e) {
             log.error("Failed to navigate to URL: {}", e.getMessage());
